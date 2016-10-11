@@ -1,4 +1,4 @@
-# collect-exec.sh
+# My personal OS report - collect-exec.sh
 
 About one year I’ve developed a shell script to collect important information about operation system, software and hardware in TIM Telecom, there they have applications running on Alpha, Solaris, HP-UX, AIX and obvious in the mighty Linux.
 
@@ -11,4 +11,4 @@ The script collects a lot of information about the running system and save the o
 The function to run on AIX it’s incomplete, if you like AIX please make your contribution.
 
 # License
-collect-exec.sh is licensed under the MIT license. See included LICENSE.md.
+This project is licensed under the MIT license. See included LICENSE.md.
