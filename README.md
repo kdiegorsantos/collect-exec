@@ -1,4 +1,4 @@
-# collect-exec - My personal OS report
+# My personal OS report
 
 About one year I’ve developed a shell script to collect important information about operation system, software and hardware in TIM Telecom, there they have applications running on Alpha, Solaris, HP-UX, AIX and obvious in the mighty Linux.
 
