@@ -9,3 +9,6 @@ In this shell script there is a lot of *nix commands to collect information abou
 The script collects a lot of information about the running system and save the output of each commands in a text file, and saves copies of important files in a directory named files. At the end of the script everything is compressed with tar in the global directory.
 
 The function to run on AIX it’s incomplete, if you like AIX please make your contribution.
+
+# License
+collect-exec.sh is licensed under the MIT license. See included LICENSE.md.
