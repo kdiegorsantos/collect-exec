@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# script:       collect_exec.sh - version 2.00
+# script:       collect_exec.sh - version 3.00
 # description:  collect information about system, software and hardware.
 # author:       Diego R. Santos <kdiegorsantos@gmail.com>
 
@@ -82,7 +82,6 @@ netstat -anupl > ${collect_path}/netstat_anupl.txt
 netstat -neopa > ${collect_path}/netstat_neopa.txt
 netstat -nr > ${collect_path}/netstat_nr.txt
 netstat -s > ${collect_path}/netstat_s.txt
-netstat -s > ${collect_path}/netstat_s.txt
 nfsstat -a > ${collect_path}/nfsstat.txt
 ntpstat > ${collect_path}/ntpstat.txt
 ps alxwww > ${collect_path}/ps_alxwww.txt
@@ -106,7 +105,9 @@ vgdisplay -vv --config="global{locking_type=0}" > ${collect_path}/vgdisplay.txt
 vgscan -vvv --config="global{locking_type=0}" > ${collect_path}/vgscan.txt
 vgs -v --config="global{locking_type=0}" > ${collect_path}/vgs.txt
 yum -C repolist > ${collect_path}/yum_repolist.txt
-/usr/local/sbin/boot_device.sh > ${collect_path}/boot_device.txt
+
+# collect information about boot disk
+[ -x /usr/local/sbin/boot_device.sh ] && /usr/local/sbin/boot_device.sh > ${collect_path}/boot_device.txt
 
 # generate hadouken json file.
 [ -x /usr/local/sbin/hadouken.py ] && /usr/local/sbin/hadouken.py
@@ -166,9 +167,7 @@ if [ ! -z "$check_vcs_had" ] ; then
   hatype -display > ${collect_path}/hatype_display.txt
   hatype -list > ${collect_path}/hatype_list.txt
   hares -list > ${collect_path}/hares_list.txt
-  hares -list > ${collect_path}/hares_list.txt
   hagrp -list > ${collect_path}/hares_list.txt
-  hagrp -list > ${collect_path}/hagrp_list.txt
   haclus -value EngineVersion > ${collect_path}/haclus_engineversion.txt
   haclus -display > ${collect_path}/haclus_display.txt
   vxddladm get namingscheme > ${collect_path}/vxddladm_namingscheme.txt
@@ -183,7 +182,7 @@ if [ ! -z "$check_vcs_had" ] ; then
   vxdctl mode > ${collect_path}/vxdctl_mode.txt
   vxclustadm -v nodestate > ${collect_path}/vxclustadm_nodestate.txt
   vxclustadm nidmap > ${collect_path}/vxclustadm_nidmap.txt
-  /usr/lib/vxvm/bin/vxclustadm -v nodestate -d > ${collect_path}/vxclustadm_v_nodestate.txt
+  vxclustadm -v nodestate -d > ${collect_path}/vxclustadm_v_nodestate.txt
   gabconfig -a > ${collect_path}/gabconfig_a.txt
   gabconfig -W > ${collect_path}/gabconfig_W.txt
   lltconfig -W > ${collect_path}/lltconfig_W.txt
