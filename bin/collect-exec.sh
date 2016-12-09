@@ -126,8 +126,8 @@ fi
 if [ -x /usr/bin/systool ] ; then
   systool -v -c fc_host > ${collect_path}/systool_vc_fc_host.txt
 else
-  for a in $(ls /sys/class/fc_host/host)
-    do ; cat $a/port_name >> ${collect_path}/fc_port_name.txt
+  for a in $(ls /sys/class/fc_host/host) ; do
+    cat $a/port_name >> ${collect_path}/fc_port_name.txt
   done
 fi
 

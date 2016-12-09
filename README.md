@@ -21,10 +21,10 @@ Install and configure collect-exec
 Clone the project, give right permission and configure a cron job.
 
 ```sh
-$ git clone https://github.com/kdiegorsnatos/collect-exec.git /var/tmp
-$ chmod u+x /var/tmp/kdiegorsantos.collect-exec/bin/collect-exec.sh
+$ cd /var/tmp && git clone https://github.com/kdiegorsnatos/collect-exec.git
+$ chmod u+x /var/tmp/collect-exec/bin/collect-exec.sh
 $ cat <<EOF>> /var/spool/cron/root
-00 22 * * * timeout 60m /var/tmp/kdiegorsantos.collect-exec/bin/collect-exec.sh
+00 22 * * * timeout 60m /var/tmp/collect-exec/bin/collect-exec.sh
 EOF
 ```
 
