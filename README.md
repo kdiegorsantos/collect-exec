@@ -10,6 +10,7 @@ The shell script collects a lot of information about the running system and save
 Tested with
 ----------------
 + Red Hat Enterprise Linux
++ Ubuntu 
 + Solaris
 + HP-UX
 + AIX
@@ -68,6 +69,22 @@ getconf_page_size.txt    ipcs_a.txt                   netstat_s.txt       vxdctl
 hacf_verify_display.txt  java.txt                     nfsstat.txt         vxdctl_mode.txt
 haclus_display.txt       java_version.txt             ntpstat.txt         vxddladm_listjbod.txt
 ```
+
+Ansible tasks
+-------
+
+If you want to automate the deploy of this shell script, feel free to use my ansibles tasks.
+
+Deploy the shell script to your servers.
+```sh
+$ ansible-playbook /var/tmp/collect/ansible/tasks/deploy_collect-exec.yml
+```
+
+Fetch tar files from your servers.
+```sh
+$ ansible-playbook /var/tmp/collect/ansible/tasks/fetch_collect-exec.yml
+```
+
 
 License
 -------
