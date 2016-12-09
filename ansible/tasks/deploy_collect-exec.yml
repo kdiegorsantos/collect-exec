@@ -1,0 +1,15 @@
+- hosts: collect-exec
+  gather_facts: no
+
+  tasks:
+    - name: Purge old version
+      file: name={{ item }} state=absent
+      with_items:
+        - /var/tmp/collect-exec.sh
+
+    - name: Deploy updated version
+      copy: src=/var/tmp/collect/bin/collect-exec.sh dest=/var/tmp/collect-exec.sh mode=0775 owner=root
+
+    - name: Configure cron job
+      cron: name="collect-exec" state=present minute="0" hour="22" job="timeout 30m /var/tmp/collect-exec.sh"
+

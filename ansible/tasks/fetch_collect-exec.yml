@@ -1,0 +1,14 @@
+- hosts: collect
+  gather_facts: no
+
+  tasks:
+    - name: Find tar files
+      shell: "find /var/tmp/collect -maxdepth 1 -type f | awk -F/ '{print $NF}'"
+      register: result
+
+    - name: Degub tar file name
+      debug: var=result
+
+    - name: Fetch tar file
+      fetch: src=/var/tmp/collect/{{ item }} dest=/var/tmp/collect/ flat=yes
+      with_items: result.stdout_lines
