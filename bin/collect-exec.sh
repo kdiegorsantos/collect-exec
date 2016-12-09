@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# script:       collect_exec.sh - version 3.00
+# script:       collect_exec.sh - version 4.00
 # description:  collect information about system, software and hardware.
 # author:       Diego R. Santos <kdiegorsantos@gmail.com>
 
@@ -220,6 +220,9 @@ if [ -d /etc/VRTSvcs/conf/config/ ] ; then
   mkdir -p ${collect_path}/VRTSvcs
   cp -r /etc/{llthosts,VRTSvcs/conf/config/*.cf,llttab,vxfenmode,vxfentab,gabtab,gabconfig,VRTSagents,VRTSvbs,vxcps,vxfen.d} ${collect_path}/VRTSvcs
 fi
+
+# delete empty files
+find ${collect_path} -empty -exec rm -rf '{}' \;
 
 # compress than delete the current job directory.
 [ -d ${collect_path} ] && cd ${collect_path}/../ && mv $(date +"%d%m%Y") $(hostname -s)_$(date +"%d%m%Y") && tar -cvjSf collect_$(hostname -s)_$(date +"%d%m%Y").tar.bz2 $(hostname -s)_$(date +"%d%m%Y") --remove-files
