@@ -24,8 +24,8 @@ Clone the project, give right permission and configure a cron job.
 ```sh
 $ cd /var/tmp && git clone https://github.com/kdiegorsnatos/collect-exec.git
 $ chmod u+x /var/tmp/collect-exec/bin/collect-exec.sh
-$ cat <<EOF>> /var/spool/cron/root
-00 22 * * * timeout 60m /var/tmp/collect-exec/bin/collect-exec.sh
+$ cat <<EOF>> /var/spool/cron/crontabs/root
+00 22 * * * timeout 30m /var/tmp/collect-exec/bin/collect-exec.sh
 EOF
 ```
 
@@ -77,12 +77,12 @@ If you want to automate the deploy of this shell script, feel free to use my ans
 
 Deploy the shell script to your servers.
 ```sh
-$ ansible-playbook /var/tmp/collect/ansible/tasks/deploy_collect-exec.yml
+$ ansible-playbook /var/tmp/collect/ansible/deploy_collect-exec.yml
 ```
 
 Fetch tar files from your servers.
 ```sh
-$ ansible-playbook /var/tmp/collect/ansible/tasks/fetch_collect-exec.yml
+$ ansible-playbook /var/tmp/collect/ansible/fetch_collect-exec.yml
 ```
 
 
