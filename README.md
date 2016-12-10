@@ -6,7 +6,7 @@
 
 # [collect-exec](https://github.com/kdiegorsantos/collect-exec)
 
-This shell scriptl collects information about the running system and save the output of each commands in text files, saves copies of important files in a separated directory. At the end of the script everything is compressed and saved in /var/tmp/collect directory.
+This shell script collects configuration and diagnostic information from *nix operation systems.
 
 
 ----
