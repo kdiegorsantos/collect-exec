@@ -1,48 +1,68 @@
-collect-exec.sh - My personal operation system report
-----------------
+**[Technical overview](#technical-overview)** |
+**[Installation](#installation)** |
+**[Configuration](#configuration)** |
+**[Running](#running)** |
+**[License](#license)**
 
-About one year i developed a shell script to collect important information about operation system, software and hardware in TIM Telecom at Brazil, there they have applications running on Alpha, Solaris, HP-UX, AIX and obvious in the mighty and glorious Linux.
+# [collect-exec](https://github.com/kdiegorsantos/collect-exec)
 
-And for this purpose the collect-exec.sh shell script was born, i also developed two ansible tasks, one for deploy cron jobs and other to collect the compressed data that was generate by this little monster that saved me a some times.
+This shell scriptl collects information about the running system and save the output of each commands in text files, saves copies of important files in a separated directory. At the end of the script everything is compressed and saved in /var/tmp/collect directory.
 
-The shell script collects a lot of information about the running system and save the output of each commands in a text file, and saves copies of important files in a directory named files. At the end of the script everything is compressed with and saved in the global directory.
 
-Tested with
-----------------
-+ Red Hat Enterprise Linux
-+ Ubuntu 
-+ Solaris
-+ HP-UX
-+ AIX
-+ Alpha
+----
 
-Install and configure
-----------------
+## Installation
 
-Clone the project, give right permission and configure a cron job.
+Fork and give permission.
 
-```sh
-$ cd /var/tmp && git clone https://github.com/kdiegorsnatos/collect-exec.git
-$ chmod u+x /var/tmp/collect-exec/bin/collect-exec.sh
-$ cat <<EOF>> /var/spool/cron/crontabs/root
+```bash
+cd /var/tmp && git clone https://github.com/kdiegorsnatos/collect-exec.git
+chmod u+x /var/tmp/collect-exec/bin/collect-exec.sh
+```
+
+----
+
+## Configuration
+
+- cron job
+
+Create a cron job to execute the script every day.
+
+```bash
+cat <<EOF>> /var/spool/cron/crontabs/root
 00 22 * * * timeout 30m /var/tmp/collect-exec/bin/collect-exec.sh
 EOF
 ```
 
-Execute and display collected information
-----------------
+- ansible-playbook
 
-To run the script.
+If you want to automate the deploy of this shell script, feel free to use these ansible tasks.
 
-```sh
-$ ./var/tmp/collect-exec/bin/collect-exec.sh
+Deploy the shell script to your servers.
+```bash
+ansible-playbook /var/tmp/collect/ansible/deploy_collect-exec.yml
 ```
 
-To display information.
+Fetch tar files from your servers.
+```bash
+ansible-playbook /var/tmp/collect/ansible/fetch_collect-exec.yml
+```
 
-```sh
-$ tar -xvf /var/tmp/collect/collect_ubuntu_09122016.tar.bz2 -C /var/tmp/collect
-$ ls /var/tmp/collect/ubuntu_09122016
+----
+
+## Running
+
+To run the shell script.
+
+```bash
+./var/tmp/collect-exec/bin/collect-exec.sh
+```
+
+Uncompress the tar file and check the collected information.
+
+```bash
+tar -xvf /var/tmp/collect/collect_ubuntu_09122016.tar.bz2 -C /var/tmp/collect
+ls /var/tmp/collect/ubuntu_09122016
 arp_a.txt                haclus_engineversion.txt     last_boot.txt       ps_alxwww.txt               vxddladm_listsupport.txt
 cfscluster_status.txt    had_version.txt              lltconfig_W.txt     ps_auxwwwm.txt              vxddladm_namingscheme.txt
 chkconfig.txt            hares_list.txt               lltstat.txt         pstree.txt                  vxdg_list.txt
@@ -70,30 +90,22 @@ hacf_verify_display.txt  java.txt                     nfsstat.txt         vxdctl
 haclus_display.txt       java_version.txt             ntpstat.txt         vxddladm_listjbod.txt
 ```
 
-Ansible tasks
--------
+- ansible tasks
 
-If you want to automate the deploy of this shell script, feel free to use my ansibles tasks.
+If you want to automate the deploy of this shell script, feel free to use these ansible tasks.
 
 Deploy the shell script to your servers.
-```sh
-$ ansible-playbook /var/tmp/collect/ansible/deploy_collect-exec.yml
+```bash
+ansible-playbook /var/tmp/collect/ansible/deploy_collect-exec.yml
 ```
 
 Fetch tar files from your servers.
-```sh
-$ ansible-playbook /var/tmp/collect/ansible/fetch_collect-exec.yml
+```bash
+ansible-playbook /var/tmp/collect/ansible/fetch_collect-exec.yml
 ```
 
+----
 
-License
--------
+## License
 
 This project is licensed under the MIT license. See included LICENSE.md.
-
-
-Author Information
--------
-
-* Diego R. Santos
-* [github.com](https://github.com/kdiegorsantos)
