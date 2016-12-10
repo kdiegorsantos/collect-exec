@@ -36,7 +36,7 @@ EOF
 
 - ansible-playbook
 
-If you want to automate the deploy of this shell script, feel free to use these ansible tasks.
+If you want to automate the deploy of this shell script, feel free to use these ansible playbooks.
 
 Deploy the shell script to your servers.
 ```bash
@@ -88,20 +88,6 @@ getconf_long_bit.txt     ip_route_show_table_all.txt  netstat_nr.txt      vxclus
 getconf_page_size.txt    ipcs_a.txt                   netstat_s.txt       vxdctl_c_mode.txt           yum_repolist.txt
 hacf_verify_display.txt  java.txt                     nfsstat.txt         vxdctl_mode.txt
 haclus_display.txt       java_version.txt             ntpstat.txt         vxddladm_listjbod.txt
-```
-
-- ansible tasks
-
-If you want to automate the deploy of this shell script, feel free to use these ansible tasks.
-
-Deploy the shell script to your servers.
-```bash
-ansible-playbook /var/tmp/collect/ansible/deploy_collect-exec.yml
-```
-
-Fetch tar files from your servers.
-```bash
-ansible-playbook /var/tmp/collect/ansible/fetch_collect-exec.yml
 ```
 
 ----
