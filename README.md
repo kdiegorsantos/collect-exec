@@ -16,7 +16,7 @@ This shell script collects configuration and diagnostic information from *nix op
 Fork and give permission.
 
 ```bash
-cd /var/tmp && git clone https://github.com/kdiegorsnatos/collect-exec.git
+cd /var/tmp && git clone https://github.com/kdiegorsantos/collect-exec
 chmod u+x /var/tmp/collect-exec/bin/collect-exec.sh
 ```
 
