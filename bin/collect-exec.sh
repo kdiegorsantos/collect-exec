@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 # script:       collect_exec.sh - version 4.00
 # description:  collect information about system, software and hardware.
